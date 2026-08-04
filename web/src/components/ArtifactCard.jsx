@@ -1,54 +1,91 @@
-export default function ArtifactCard({ card, onSelect }) {
-
+export default function ArtifactCard({ card }) {
     return (
-
         <div
-            onClick={() => onSelect(card)}
             style={{
+                background: "#1f2937",
+                border: "1px solid #3b4252",
+                borderRadius: "14px",
+                padding: "24px",
+                textAlign: "center",
+                transition: ".25s",
                 cursor: "pointer",
-                background: "#1b2435",
-                padding: "20px",
-                borderRadius: "10px",
-                border: "1px solid #333",
-                transition: "0.2s",
-                textAlign: "center"
+                boxShadow: "0 0 12px rgba(0,0,0,.25)"
             }}
         >
+            <div
+                style={{
+                    fontSize: "3rem",
+                    marginBottom: "10px"
+                }}
+            >
+                🖼️
+            </div>
 
-            <h3
+            <h2
                 style={{
                     color: "#8fd3ff",
-                    marginBottom: "15px"
+                    marginBottom: "20px"
                 }}
             >
                 {card["Unnamed: 2"]}
-            </h3>
+            </h2>
 
-            <p>
-                <strong>Sticker:</strong> {card["Unnamed: 1"]}
-            </p>
-
-            <p>
-                <strong>Twin:</strong> {card["Unnamed: 4"]}
-            </p>
-
-            <button
+            <div
                 style={{
-                    marginTop: "15px",
-                    padding: "8px 16px",
-                    background: "#6fc7ff",
-                    color: "#111827",
-                    border: "none",
-                    borderRadius: "6px",
-                    cursor: "pointer",
+                    color: "#cbd5e1",
+                    marginBottom: "8px"
+                }}
+            >
+                Artifact No.
+            </div>
+
+            <div
+                style={{
+                    fontSize: "1.4rem",
+                    fontWeight: "bold",
+                    marginBottom: "20px"
+                }}
+            >
+                {card["Unnamed: 1"]}
+            </div>
+
+            <hr
+                style={{
+                    borderColor: "#374151",
+                    margin: "20px 0"
+                }}
+            />
+
+            <div
+                style={{
+                    color: "#cbd5e1"
+                }}
+            >
+                Twin Artifact
+            </div>
+
+            <div
+                style={{
+                    marginBottom: "25px",
                     fontWeight: "bold"
                 }}
             >
-                View Artifact →
+                {card["Unnamed: 4"]}
+            </div>
+
+            <button
+                style={{
+                    background: "#6fc7ff",
+                    color: "#111827",
+                    border: "none",
+                    padding: "12px 22px",
+                    borderRadius: "8px",
+                    fontWeight: "bold",
+                    cursor: "pointer"
+                }}
+            >
+                Enter Museum →
             </button>
-
         </div>
-
     );
-
 }
