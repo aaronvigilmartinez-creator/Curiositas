@@ -45,7 +45,7 @@ export default function ArtifactCard({ card }) {
                 {card["Unnamed: 4"]}
             </p>
 
-            <Link to="/artifact">
+            <Link to={`/artifact/${card["Unnamed: 1"]}`}>
 
                 <button
                     style={{

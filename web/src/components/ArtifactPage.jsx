@@ -1,4 +1,11 @@
+import { useParams } from "react-router-dom";
+
 export default function ArtifactPage() {
+
+    const { artifactId } = useParams();
+
+    console.log("Artifact ID:", artifactId);
+
     return (
         <div
             style={{

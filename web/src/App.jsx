@@ -37,7 +37,7 @@ export default function App() {
                 />
 
                 <Route
-                    path="/artifact"
+                    path="/artifact/:artifactId"
                     element={<ArtifactPage />}
                 />
 
