@@ -1,6 +1,7 @@
-import { useParams } from "react-router-dom";
-
+import { useParams, Link } from "react-router-dom";
 import universe from "../data/gpk_universe.json";
+
+import MuseumPanel from "./MuseumPanel";
 
 export default function ArtifactPage() {
 
@@ -14,7 +15,7 @@ export default function ArtifactPage() {
         const cards = universe[galaxy];
 
         const found = cards.find(
-            (card) => card["Unnamed: 1"] === artifactId
+            card => card["Unnamed: 1"] === artifactId
         );
 
         if (found) {
@@ -22,20 +23,19 @@ export default function ArtifactPage() {
             galaxyName = galaxy;
             break;
         }
+
     }
 
     if (!artifact) {
 
         return (
 
-            <div
-                style={{
-                    color: "white",
-                    textAlign: "center",
-                    padding: "60px"
-                }}
-            >
+            <div style={{ color: "white", padding: "80px", textAlign: "center" }}>
+
                 <h2>Artifact Not Found</h2>
+
+                <Link to="/">← Return to Observatory</Link>
+
             </div>
 
         );
@@ -48,88 +48,112 @@ export default function ArtifactPage() {
 
         <div
             style={{
-                maxWidth: "900px",
+                maxWidth: "1200px",
                 margin: "40px auto",
-                padding: "40px",
-                background: "#111827",
-                border: "1px solid #6fc7ff",
-                borderRadius: "12px",
+                padding: "30px",
                 color: "white"
             }}
         >
 
-            <h1
-                style={{
-                    color: "#8fd3ff",
-                    textAlign: "center"
-                }}
-            >
-                🖼 Artifact Museum
-            </h1>
-
-            <hr />
-
-            <h2 style={{ textAlign: "center" }}>
-                {artifact["Unnamed: 2"]}
-            </h2>
-
             <div
                 style={{
                     textAlign: "center",
-                    marginTop: "20px"
+                    marginBottom: "40px"
                 }}
             >
 
-                <img
-                    src={imagePath}
-                    alt={artifact["Unnamed: 2"]}
+                <div
                     style={{
-                        width: "300px",
-                        borderRadius: "10px",
-                        border: "2px solid #6fc7ff"
+                        letterSpacing: "4px",
+                        color: "#6fc7ff",
+                        fontSize: "14px"
                     }}
-                    onError={(e) => {
+                >
+                    CURIOSITAS MUSEUM
+                </div>
 
-                        e.target.style.display = "none";
+                <h1>{artifact["Unnamed: 2"]}</h1>
 
+                <div
+                    style={{
+                        color: "#9ca3af"
                     }}
-                />
+                >
+                    {galaxyName} • Artifact {artifact["Unnamed: 1"]}
+                </div>
 
             </div>
 
             <div
                 style={{
-                    marginTop: "30px",
-                    textAlign: "center",
-                    fontSize: "22px",
-                    lineHeight: "1.8"
+                    display: "grid",
+                    gridTemplateColumns: "2fr 1fr",
+                    gap: "30px",
+                    alignItems: "start"
                 }}
             >
 
-                <div>
+                <div
+                    style={{
+                        background: "#111827",
+                        border: "1px solid #6fc7ff",
+                        borderRadius: "14px",
+                        padding: "30px",
+                        textAlign: "center"
+                    }}
+                >
 
-                    <strong>Artifact Number:</strong>{" "}
-                    {artifact["Unnamed: 1"]}
+                    <img
+                        src={imagePath}
+                        alt={artifact["Unnamed: 2"]}
+                        style={{
+                            width: "100%",
+                            maxWidth: "420px",
+                            borderRadius: "12px"
+                        }}
+                        onError={(e) => {
+
+                            e.target.style.display = "none";
+
+                        }}
+                    />
 
                 </div>
 
-                <div>
+                <div
+                    style={{
+                        display: "flex",
+                        flexDirection: "column",
+                        gap: "20px"
+                    }}
+                >
 
-                    <strong>Twin:</strong>{" "}
-                    {artifact["Unnamed: 4"]}
+                    <MuseumPanel title="Artifact Information">
 
-                </div>
+                        <p><strong>Galaxy</strong><br />{galaxyName}</p>
 
-                <div>
+                        <p><strong>Artifact</strong><br />{artifact["Unnamed: 1"]}</p>
 
-                    <strong>Galaxy:</strong>{" "}
-                    {galaxyName}
+                        <p><strong>Twin</strong><br />{artifact["Unnamed: 4"]}</p>
 
-                </div>
+                        <p><strong>Status</strong><br />Museum Prototype</p>
 
-                <div>
+                    </MuseumPanel>
 
-                    <strong>Status:</strong> Prototype Museum Exhibit
+                    <MuseumPanel title="Curator Notes">
+
+                        <p>
+
+                            Every artifact has a story.
+
+                            Curiositas preserves not merely
+                            the object...
+
+                            but the meaning attached to it.
+
+                        </p>
+
+                    </MuseumPanel>
 
                 </div>
 
@@ -137,20 +161,21 @@ export default function ArtifactPage() {
 
             <div
                 style={{
-                    marginTop: "40px",
-                    padding: "25px",
-                    border: "1px dashed #444",
-                    borderRadius: "10px",
+                    marginTop: "50px",
                     textAlign: "center"
                 }}
             >
 
-                <h3>Curator Notes</h3>
-
-                <p>
-                    Every artifact has a story. This page will eventually preserve
-                    its history, artwork, market data, commentary, and relationships.
-                </p>
+                <Link
+                    to="/"
+                    style={{
+                        color: "#6fc7ff",
+                        textDecoration: "none",
+                        fontWeight: "bold"
+                    }}
+                >
+                    ← Return to Observatory
+                </Link>
 
             </div>
 
