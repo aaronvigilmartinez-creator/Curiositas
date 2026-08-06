@@ -1,5 +1,6 @@
 import { useParams, Link } from "react-router-dom";
-import universe from "../data/gpk_universe.json";
+
+import { findArtifact } from "../services/KnowledgeEngine";
 
 import MuseumPanel from "./MuseumPanel";
 import ConstellationPanel from "./ConstellationPanel";
@@ -8,27 +9,12 @@ export default function ArtifactPage() {
 
     const { artifactId } = useParams();
 
-    let artifact = null;
-    let galaxyName = "";
+    const result = findArtifact(artifactId);
 
-    for (const galaxy of Object.keys(universe)) {
-
-        const cards = universe[galaxy];
-
-        const found = cards.find(
-            card => card["Unnamed: 1"] === artifactId
-        );
-
-        if (found) {
-            artifact = found;
-            galaxyName = galaxy;
-            break;
-        }
-    }
-
-    if (!artifact) {
+    if (!result) {
 
         return (
+
             <div
                 style={{
                     color: "white",
@@ -36,6 +22,7 @@ export default function ArtifactPage() {
                     textAlign: "center"
                 }}
             >
+
                 <h2>Artifact Not Found</h2>
 
                 <Link to="/">
@@ -43,11 +30,14 @@ export default function ArtifactPage() {
                 </Link>
 
             </div>
+
         );
 
     }
 
-    const imagePath = `/src/assets/cards/${galaxyName}/${artifactId}.webp`;
+    const { galaxy, artifact } = result;
+
+    const imagePath = `/src/assets/cards/${galaxy}/${artifactId}.webp`;
 
     const relatedArtifacts = [
 
@@ -96,7 +86,7 @@ export default function ArtifactPage() {
                         color: "#9ca3af"
                     }}
                 >
-                    {galaxyName} • Artifact {artifact["Unnamed: 1"]}
+                    {galaxy} • Artifact {artifact["Unnamed: 1"]}
                 </div>
 
             </div>
@@ -147,7 +137,7 @@ export default function ArtifactPage() {
 
                     <MuseumPanel title="Artifact Information">
 
-                        <p><strong>Galaxy</strong><br />{galaxyName}</p>
+                        <p><strong>Galaxy</strong><br />{galaxy}</p>
 
                         <p><strong>Artifact</strong><br />{artifact["Unnamed: 1"]}</p>
 
@@ -158,11 +148,8 @@ export default function ArtifactPage() {
                     </MuseumPanel>
 
                     <ConstellationPanel
-
                         title="Constellation"
-
                         artifacts={relatedArtifacts}
-
                     />
 
                     <MuseumPanel title="Curator Notes">
