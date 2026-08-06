@@ -21,10 +21,10 @@ export default function FirstLight() {
                     left: "50%",
                     top: "50%",
 
+                    transform: "translate(-50%, -50%)",
+
                     width: "10px",
                     height: "10px",
-
-                    transform: "translate(-50%, -50%)",
 
                     borderRadius: "50%",
 
