@@ -1,6 +1,7 @@
 import { useParams, Link } from "react-router-dom";
 
 import { findArtifact } from "../services/KnowledgeEngine";
+import { getGalaxySummary } from "../services/GalaxyIntelligence";
 
 import MuseumPanel from "./MuseumPanel";
 import ConstellationPanel from "./ConstellationPanel";
@@ -36,6 +37,8 @@ export default function ArtifactPage() {
     }
 
     const { galaxy, artifact } = result;
+
+    const galaxySummary = getGalaxySummary(galaxy);
 
     const imagePath = `/src/assets/cards/${galaxy}/${artifactId}.webp`;
 
@@ -100,6 +103,8 @@ export default function ArtifactPage() {
                 }}
             >
 
+                {/* Artifact */}
+
                 <div
                     style={{
                         background: "#111827",
@@ -127,6 +132,8 @@ export default function ArtifactPage() {
 
                 </div>
 
+                {/* Sidebar */}
+
                 <div
                     style={{
                         display: "flex",
@@ -147,9 +154,36 @@ export default function ArtifactPage() {
 
                     </MuseumPanel>
 
+                    <MuseumPanel title="Galaxy Summary">
+
+                        <p>
+
+                            <strong>Total Artifacts</strong>
+
+                            <br />
+
+                            {galaxySummary.totalArtifacts}
+
+                        </p>
+
+                        <p>
+
+                            <strong>Release</strong>
+
+                            <br />
+
+                            {galaxySummary.releaseInformation}
+
+                        </p>
+
+                    </MuseumPanel>
+
                     <ConstellationPanel
+
                         title="Constellation"
+
                         artifacts={relatedArtifacts}
+
                     />
 
                     <MuseumPanel title="Curator Notes">
