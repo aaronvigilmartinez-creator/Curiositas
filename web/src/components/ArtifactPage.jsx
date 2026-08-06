@@ -2,6 +2,7 @@ import { useParams, Link } from "react-router-dom";
 import universe from "../data/gpk_universe.json";
 
 import MuseumPanel from "./MuseumPanel";
+import ConstellationPanel from "./ConstellationPanel";
 
 export default function ArtifactPage() {
 
@@ -23,26 +24,42 @@ export default function ArtifactPage() {
             galaxyName = galaxy;
             break;
         }
-
     }
 
     if (!artifact) {
 
         return (
-
-            <div style={{ color: "white", padding: "80px", textAlign: "center" }}>
-
+            <div
+                style={{
+                    color: "white",
+                    padding: "80px",
+                    textAlign: "center"
+                }}
+            >
                 <h2>Artifact Not Found</h2>
 
-                <Link to="/">← Return to Observatory</Link>
+                <Link to="/">
+                    ← Return to Observatory
+                </Link>
 
             </div>
-
         );
 
     }
 
     const imagePath = `/src/assets/cards/${galaxyName}/${artifactId}.webp`;
+
+    const relatedArtifacts = [
+
+        artifact["Unnamed: 4"],
+
+        "On Fire MARIAH",
+
+        "Bustin' JUSTIN",
+
+        "Cootie CODY"
+
+    ];
 
     return (
 
@@ -139,6 +156,14 @@ export default function ArtifactPage() {
                         <p><strong>Status</strong><br />Museum Prototype</p>
 
                     </MuseumPanel>
+
+                    <ConstellationPanel
+
+                        title="Constellation"
+
+                        artifacts={relatedArtifacts}
+
+                    />
 
                     <MuseumPanel title="Curator Notes">
 
