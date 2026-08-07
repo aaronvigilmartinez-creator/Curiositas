@@ -1,11 +1,16 @@
 import NebulaLayer from "./NebulaLayer";
+import WitnessStars from "./WitnessStars";
+import StellarHalo from "./StellarHalo";
+import PresenceEngine from "./PresenceEngine";
 
 export default function FirstLight() {
 
     return (
 
         <>
+
             <style>
+
                 {`
 
                     @keyframes breathe {
@@ -25,50 +30,72 @@ export default function FirstLight() {
                     }
 
                 `}
+
             </style>
 
-            <div
-                style={{
-                    position: "fixed",
-                    inset: 0,
+            <PresenceEngine>
 
-                    background:
-                        "radial-gradient(circle at center, #07152b 0%, #030712 45%, #000000 100%)",
+                {(presence) => (
 
-                    overflow: "hidden",
-                }}
-            >
+                    <div
+                        style={{
+                            position: "fixed",
+                            inset: 0,
 
-                {/* NebulaLayer */}
+                            background:
+                                "radial-gradient(circle at center, #07152b 0%, #030712 45%, #000000 100%)",
 
-                <NebulaLayer />
+                            overflow: "hidden",
+                        }}
+                    >
 
-                {/* Protostar */}
+                        {/* Nebula */}
 
-                <div
-                    style={{
-                        position: "absolute",
+                        <NebulaLayer />
 
-                        left: "50%",
-                        top: "50%",
+                        {/* Witness Stars */}
 
-                        width: "10px",
-                        height: "10px",
+                        <WitnessStars />
 
-                        transform: "translate(-50%, -50%)",
+                        {/* Stellar Halo */}
 
-                        borderRadius: "50%",
+                        <StellarHalo />
 
-                        background: "#fff9d6",
+                        {/* Protostar */}
 
-                        boxShadow:
-                            "0 0 12px #fff8cc, 0 0 30px #ffe88a, 0 0 60px rgba(255,230,120,.35)",
+                        <div
+                            style={{
+                                position: "absolute",
 
-                        animation: "breathe 8s ease-in-out infinite",
-                    }}
-                />
+                                left: "50%",
+                                top: "50%",
 
-            </div>
+                                width: "12px",
+                                height: "12px",
+
+                                transform: "translate(-50%, -50%)",
+
+                                borderRadius: "50%",
+
+                                background: "#fff9d6",
+
+                                boxShadow: `
+                                    0 0 12px #fff8cc,
+                                    0 0 32px rgba(255,236,170,.70),
+                                    0 0 80px rgba(255,225,120,.25),
+                                    0 0 180px rgba(120,170,255,.10)
+                                `,
+
+                                animation: "breathe 8s ease-in-out infinite",
+
+                            }}
+                        />
+
+                    </div>
+
+                )}
+
+            </PresenceEngine>
 
         </>
 

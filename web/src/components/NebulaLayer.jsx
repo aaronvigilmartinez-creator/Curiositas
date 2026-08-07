@@ -3,93 +3,118 @@ export default function NebulaLayer() {
     return (
 
         <>
-            {/* Deep Blue Cloud */}
+
+            <style>
+
+                {`
+
+                    @keyframes nebulaDrift {
+
+                        0% {
+
+                            transform: translate(0px, 0px) rotate(0deg);
+
+                        }
+
+                        50% {
+
+                            transform: translate(-18px, 10px) rotate(.35deg);
+
+                        }
+
+                        100% {
+
+                            transform: translate(0px, 0px) rotate(0deg);
+
+                        }
+
+                    }
+
+                `}
+
+            </style>
 
             <div
                 style={{
                     position: "absolute",
-                    left: "-30%",
-                    top: "-20%",
+                    inset: 0,
+                    overflow: "hidden",
 
-                    width: "1400px",
-                    height: "1200px",
-
-                    borderRadius: "50%",
-
-                    background:
-                        "radial-gradient(circle, rgba(70,120,255,.10) 0%, rgba(35,60,140,.05) 40%, transparent 80%)",
-
-                    filter: "blur(220px)",
-
-                    transform: "rotate(-18deg)",
+                    animation: "nebulaDrift 240s ease-in-out infinite",
                 }}
-            />
+            >
 
-            {/* Violet Gas */}
+                {/* Northern Hydrogen Cloud */}
 
-            <div
-                style={{
-                    position: "absolute",
-                    right: "-35%",
-                    bottom: "-25%",
+                <div
+                    style={{
+                        position: "absolute",
 
-                    width: "1600px",
-                    height: "1400px",
+                        width: "1800px",
+                        height: "1800px",
 
-                    borderRadius: "50%",
+                        left: "-600px",
+                        top: "-700px",
 
-                    background:
-                        "radial-gradient(circle, rgba(120,90,255,.08) 0%, rgba(50,35,110,.04) 45%, transparent 82%)",
+                        borderRadius: "50%",
 
-                    filter: "blur(260px)",
+                        background:
+                            "radial-gradient(circle, rgba(85,130,255,.10) 0%, rgba(45,80,180,.06) 25%, rgba(20,40,100,.03) 55%, transparent 82%)",
 
-                    transform: "rotate(22deg)",
-                }}
-            />
+                        filter: "blur(260px)",
 
-            {/* Central Interstellar Mist */}
+                        transform: "rotate(-18deg)",
+                    }}
+                />
 
-            <div
-                style={{
-                    position: "absolute",
+                {/* Southern Molecular Cloud */}
 
-                    left: "50%",
-                    top: "48%",
+                <div
+                    style={{
+                        position: "absolute",
 
-                    transform: "translate(-50%, -50%)",
+                        width: "2000px",
+                        height: "1600px",
 
-                    width: "1800px",
-                    height: "900px",
+                        right: "-700px",
+                        bottom: "-650px",
 
-                    borderRadius: "50%",
+                        borderRadius: "50%",
 
-                    background:
-                        "radial-gradient(circle, rgba(120,170,255,.035) 0%, rgba(60,90,180,.02) 50%, transparent 85%)",
+                        background:
+                            "radial-gradient(circle, rgba(120,90,255,.08) 0%, rgba(60,40,150,.05) 35%, rgba(30,20,70,.02) 60%, transparent 82%)",
 
-                    filter: "blur(260px)",
-                }}
-            />
+                        filter: "blur(300px)",
 
-            {/* Faint Cyan Glow */}
+                        transform: "rotate(20deg)",
+                    }}
+                />
 
-            <div
-                style={{
-                    position: "absolute",
+                {/* Ancient Light */}
 
-                    left: "25%",
-                    top: "70%",
+                <div
+                    style={{
+                        position: "absolute",
 
-                    width: "900px",
-                    height: "700px",
+                        width: "2200px",
+                        height: "1000px",
 
-                    borderRadius: "50%",
+                        left: "50%",
+                        top: "52%",
 
-                    background:
-                        "radial-gradient(circle, rgba(90,180,255,.03) 0%, transparent 85%)",
+                        transform: "translate(-50%, -50%)",
 
-                    filter: "blur(180px)",
-                }}
-            />
+                        borderRadius: "50%",
+
+                        background:
+                            "radial-gradient(circle, rgba(130,170,255,.035) 0%, rgba(70,120,220,.02) 50%, transparent 85%)",
+
+                        filter: "blur(280px)",
+                    }}
+                />
+
+            </div>
+
         </>
 
     );
