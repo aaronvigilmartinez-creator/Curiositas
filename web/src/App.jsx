@@ -1,42 +1,9 @@
-export default function FirstLight() {
+import FirstLight from "./components/FirstLight";
+
+export default function App() {
 
     return (
-
-        <div
-            style={{
-                position: "fixed",
-                inset: 0,
-
-                background:
-                    "radial-gradient(circle at center, #07152b 0%, #030712 45%, #000000 100%)",
-
-                overflow: "hidden",
-            }}
-        >
-
-            <div
-                style={{
-                    position: "absolute",
-
-                    left: "50%",
-                    top: "50%",
-
-                    width: "10px",
-                    height: "10px",
-
-                    transform: "translate(-50%, -50%)",
-
-                    borderRadius: "50%",
-
-                    background: "#fff9d6",
-
-                    boxShadow:
-                        "0 0 12px #fff8cc, 0 0 30px #ffe88a, 0 0 60px rgba(255,230,120,.35)",
-                }}
-            />
-
-        </div>
-
+        <FirstLight />
     );
 
 }

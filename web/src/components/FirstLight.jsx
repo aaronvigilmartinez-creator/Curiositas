@@ -2,6 +2,7 @@ import NebulaLayer from "./NebulaLayer";
 import WitnessStars from "./WitnessStars";
 import StellarHalo from "./StellarHalo";
 import PresenceEngine from "./PresenceEngine";
+import ObservationExperience from "./ObservationExperience";
 
 export default function FirstLight() {
 
@@ -90,6 +91,10 @@ export default function FirstLight() {
 
                             }}
                         />
+
+                        {/* Reality — Observation Experience */}
+
+                        <ObservationExperience />
 
                     </div>
 

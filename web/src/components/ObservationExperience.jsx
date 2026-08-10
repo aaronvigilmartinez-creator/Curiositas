@@ -1,8 +1,11 @@
+import { useState } from "react";
 import ObservationEncounter from "./ObservationEncounter";
 
 export default function ObservationExperience() {
 
-    const encounter = ObservationEncounter();
+    const [encounter] = useState(() =>
+        ObservationEncounter()
+    );
 
     if (!encounter || !encounter.observation) {
         return null;
@@ -13,7 +16,7 @@ export default function ObservationExperience() {
     return (
         <div
             style={{
-                position: "fixed",
+                position: "absolute",
                 inset: 0,
 
                 display: "flex",
@@ -23,17 +26,20 @@ export default function ObservationExperience() {
                 background: "#000000",
 
                 overflow: "hidden",
+
+                zIndex: 20,
             }}
         >
 
             <img
                 src={observation.image}
                 alt={observation.title}
+
                 style={{
                     width: "100%",
                     height: "100%",
 
-                    objectFit: "contain",
+                    objectFit: "cover",
 
                     display: "block",
                 }}

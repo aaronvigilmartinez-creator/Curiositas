@@ -18,17 +18,7 @@ export default function StellarHalo() {
                 borderRadius: "50%",
 
                 background:
-                    "radial-gradient(circle,
-
-                    rgba(255,245,210,.055) 0%,
-
-                    rgba(180,200,255,.030) 18%,
-
-                    rgba(110,150,255,.018) 34%,
-
-                    rgba(60,90,180,.010) 55%,
-
-                    transparent 82%)",
+                    "radial-gradient(circle, rgba(255,245,210,.055) 0%, rgba(180,200,255,.030) 18%, rgba(110,150,255,.018) 34%, rgba(60,90,180,.010) 55%, transparent 82%)",
 
                 filter: "blur(140px)",
 

@@ -1,33 +1,27 @@
-import { useState } from "react";
 import ObservationSelector from "./ObservationSelector";
 
-export default function ObservationEncounter() {
+export default function ObservationEncounter(previousObservationId = null) {
 
-    const [encounter] = useState(() => {
+    const observation =
+        ObservationSelector(previousObservationId);
 
-        const observation = ObservationSelector();
+    if (!observation) {
+        return null;
+    }
 
-        if (!observation) {
-            return null;
-        }
+    return {
+        encounterId:
+            `encounter-${Date.now()}`,
 
-        return {
-            encounterId:
-                `encounter-${Date.now()}`,
+        observationId:
+            observation.id,
 
-            observationId:
-                observation.id,
+        observation,
 
-            observation,
+        selectionMethod:
+            "stochastic",
 
-            selectionMethod:
-                "stochastic",
-
-            createdAt:
-                new Date().toISOString(),
-        };
-
-    });
-
-    return encounter;
+        createdAt:
+            new Date().toISOString(),
+    };
 }
