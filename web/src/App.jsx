@@ -1,9 +1,5 @@
-import FirstLight from "./components/FirstLight";
+import Curiositas from "./components/Curiositas";
 
 export default function App() {
-
-    return (
-        <FirstLight />
-    );
-
+  return <Curiositas />;
 }
